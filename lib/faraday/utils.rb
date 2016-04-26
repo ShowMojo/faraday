@@ -44,6 +44,7 @@ module Faraday
       end
 
       def []=(k, v)
+        @names ||= {} # Fix for YAML serializing
         k = KeyMap[k]
         k = (@names[k.downcase] ||= k)
         # join multiple values with a comma
